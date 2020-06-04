@@ -4,15 +4,13 @@ import requests
 from flask import jsonify
 # importing PyMongo client
 from pymongo import MongoClient
-
-
 import os
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 API = os.environ.get('API_KEY')
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__,
