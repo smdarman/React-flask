@@ -14,7 +14,10 @@ API = os.environ.get('API_KEY')
 
 app = Flask(__name__)
 
-app = Flask(__name__, static_folder='../build', static_url_path='/')
+# set the project root directory as the static folder, you can set others.
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='client/build')
 
 @app.route('/')
 def index():
