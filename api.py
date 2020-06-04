@@ -15,15 +15,15 @@ API = os.environ.get('API_KEY')
 app = Flask(__name__)
 
 # set the project root directory as the static folder, you can set others.
-# app = Flask(__name__,
-#             static_url_path='',
-#             static_folder='')
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='client/build')
 
-app = Flask(__name__, static_folder='client/build', static_url_path='/')
+# app = Flask(__name__, static_folder='client/build', static_url_path='/')
 
-# @app.route('/')
-# def index():
-#     return app.send_static_file('index.html')
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 client = MongoClient('localhost:27017')
 db = client.poster #poster is the name of db
