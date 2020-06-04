@@ -11,8 +11,7 @@ _pycache_
 # testing
 /coverage
 
-# production
-/build
+
 
 # misc
 .DS_Store
