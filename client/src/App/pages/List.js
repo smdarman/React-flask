@@ -18,7 +18,7 @@ class List extends Component {
   getList = () => {
     fetch('/api/getList')
     .then(res => res.json())
-    .then(list => this.setState({ list }))
+    .then(list => this.setState({ list: list.list }))
   }
 
   render() {
@@ -31,10 +31,11 @@ class List extends Component {
         {list.length ? (
           <div>
             {/* Render the list of items */}
-            {list.map((item) => {
+            {list.map((item, i) => {
               return(
-                <div>
-                  {item}
+                <div key={i}>
+                 <h1> {item.direction} </h1>
+                 <h1> {item.polarity} </h1>
                 </div>
               );
             })}

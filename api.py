@@ -22,6 +22,7 @@ app = Flask(__name__, static_folder='client/build', static_url_path='/')
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+    
 
 client = MongoClient('localhost:27017')
 db = client.poster #poster is the name of db
@@ -44,7 +45,7 @@ def get_all_stars():
   star = db.posts
   output = []
   for s in star.find():
-    output.append({'name' : s['text'], 'distance' : s['author']})
+    output.append({'title' : s['text'], 'name' : s['author']})
   return jsonify({'result' : output})
 
 
@@ -63,8 +64,10 @@ list = [{'name': 'up', 'charge': '+2/3'},
 @app.route('/api/getList', methods=['GET']) 
 def get_list():
     # list = ["item1", "item2", "item3"]
-    
-    return jsonify({'list' : list})
+    output = []
+    for i in list:
+      output.append({'direction' : i['name'], 'polarity' : i['charge']})
+    return jsonify({'list' : output})
 
 @app.route('/api/getNews', methods=['GET'])
 def get_news():

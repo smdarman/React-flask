@@ -14,7 +14,7 @@ class News extends Component {
     this.getNews();
   }
 
-  // Retrieves the News of items from the Express app
+  // Retrieves the News of items from the flask app
   getNews = () => {
     fetch("/api/getNews")
       .then(res => res.json())
