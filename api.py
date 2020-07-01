@@ -2,9 +2,15 @@ import time
 from flask import Flask
 import requests
 from flask import jsonify
-# importing PyMongo client
+import ssl
+
+from dotenv import load_dotenv
+
 from pymongo import MongoClient
 import os
+
+project_folder = os.path.expanduser('~/React-flask')  # adjust as appropriate
+load_dotenv(os.path.join(project_folder, '.env'))
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -24,8 +30,43 @@ def index():
     return app.send_static_file('index.html')
     
 
-client = MongoClient('localhost:27017')
-db = client.poster #poster is the name of db
+# client = MongoClient('localhost:27017')
+# db = client.poster #poster is the name of db
+#
+# @app.route('/star', methods=['GET'])
+# def get_all_stars():
+#   #posts is the name of collection in poster db
+#   star = db.posts
+#   output = []
+#   for s in star.find():
+#     output.append({'title' : s['text'], 'name' : s['author']})
+#   return jsonify({'result' : output})
+
+
+client = MongoClient(os.getenv('DATABASE_URL'),
+                      ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+db = client.test
+
+
+@app.route('/star', methods=['GET'])
+def get_all_stars():
+  #posts is the name of collection in poster db
+  star = db.registrations
+  output = []
+  for s in star.find():
+    output.append({'title' : s['name'], 'name' : s['email']})
+  return jsonify({'result' : output})
+
+# db = client.poster #poster is the name of db
+#
+# @app.route('/star', methods=['GET'])
+# def get_all_stars():
+#   #posts is the name of collection in poster db
+#   star = db.posts
+#   output = []
+#   for s in star.find():
+#     output.append({'title' : s['text'], 'name' : s['author']})
+#   return jsonify({'result' : output})
 
 # ContactDB with Contacts collections
 
@@ -39,14 +80,7 @@ db = client.poster #poster is the name of db
 #         output.append({'name' : s['author'], 'distance' : s['text']})
 #     return jsonify({'result' : output})
 
-@app.route('/star', methods=['GET'])
-def get_all_stars():
-  #posts is the name of collection in poster db
-  star = db.posts
-  output = []
-  for s in star.find():
-    output.append({'title' : s['text'], 'name' : s['author']})
-  return jsonify({'result' : output})
+
 
 
 @app.route('/time')
@@ -107,3 +141,7 @@ def get_news():
     
 
     return {'data': data}
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
