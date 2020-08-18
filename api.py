@@ -30,17 +30,17 @@ def index():
     return app.send_static_file('index.html')
     
 
-# client = MongoClient('localhost:27017')
-# db = client.poster #poster is the name of db
-#
-# @app.route('/star', methods=['GET'])
-# def get_all_stars():
-#   #posts is the name of collection in poster db
-#   star = db.posts
-#   output = []
-#   for s in star.find():
-#     output.append({'title' : s['text'], 'name' : s['author']})
-#   return jsonify({'result' : output})
+local = MongoClient('localhost:27017')
+db2 = local.twitterdb #poster is the name of db
+
+@app.route('/tweet', methods=['GET'])
+def get_all_tweets():
+  #posts is the name of collection in poster db
+  star = db2.mytest2_search
+  output = []
+  for s in star.find():
+    output.append({'tweet' : s['text'], 'sentiment' : s['sentiment']})
+  return jsonify({'result' : output})
 
 
 client = MongoClient(os.getenv('DATABASE_URL'),
