@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Detail from './news_detail'
 
 class News extends Component {
   // Initialize the state
@@ -39,13 +40,14 @@ class News extends Component {
           
     var items = this.state.News.map(function (item, i) {
       return <div key={i} >
-        <h3 >
+        <Detail title={item.title} description={item.description}  >
+        {/* <h3 >
          {item.title}
         </h3>
        <h2 >
          {item.description}
       </h2>
-      <img src={item.urlToImage} alt="" height="250" width="350" />
+      <img src={item.urlToImage} alt="" height="250" width="350" /> */}
         </div>
     });
     // var descs = this.state.News.map(function (desc, id) {
@@ -56,7 +58,7 @@ class News extends Component {
         <h1>List of News</h1>
 
         <ul>{items} </ul>
-        {/* {descs} */}
+
       </div>
     );
   }
