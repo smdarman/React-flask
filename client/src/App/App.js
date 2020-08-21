@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import "./App.css";
 import Home from "./pages/Home";
 import List from "./pages/List";
@@ -37,35 +38,49 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <h1>Project Home</h1>
-          <li>
-            <Link to="./">Home</Link>
-          </li>
-          <li>
-            <Link to="./News">News</Link>
-          </li>
-          <li>
-            <Link to="./About">About</Link>
-          </li>
-          <li>
-            <Link to="./db">db</Link>
-          </li>
+          <h1>React flask app</h1>
 
-          <Link to={"./list"}>
-            <button variant="raised">My List</button>
+          <Link to="./">
+            {" "}
+            <Button variant="contained" color="primary">
+              Home
+            </Button>
           </Link>
-          <Link to={"./News"}>
-            <button variant="raised">My News</button>
+
+          <Link to="./News">
+            {" "}
+            <Button variant="contained" color="secondary">
+              News
+            </Button>
           </Link>
+
+          
+            <Link to="./About">
+              {" "}
+              <Button variant="contained" color="primary">
+                About
+              </Button>
+            </Link>
+          
+         
+            <Link to="./db">
+              {" "}
+              <Button variant="contained" color="secondary">
+                Db
+              </Button>
+            </Link>
+          
+
+         
 
           <Switch>
+            {/* this is router creation section */}
             <Route exact path="/" component={Home} />
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/News" component={News} />
             <Route path="/About" component={About} />
             <Route path="/db" component={db} />
-            
           </Switch>
         </div>
       </Router>
