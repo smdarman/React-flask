@@ -36,19 +36,27 @@ class News extends Component {
 
   render() {
  
-      
+    const mystyle = {
+      color: "red",
+      backgroundColor: "lightblue",
+      fontFamily: "Arial"
+    };
           
     var items = this.state.News.map(function (item, i) {
       return <div key={i} >
-        <Detail title={item.title} description={item.description}  >
-        {/* <h3 >
+        
+        <h1 style={mystyle}>
          {item.title}
-        </h3>
-       <h2 >
+        </h1>
+        <a href={item.url}>{item.source.name}</a>
+       <h3 >
          {item.description}
-      </h2>
-      <img src={item.urlToImage} alt="" height="250" width="350" /> */}
+      </h3> 
+      
+      <img src={item.urlToImage} alt="" height="250" width="350" />
+   
         </div>
+
     });
     // var descs = this.state.News.map(function (desc, id) {
     //   return <h4 key={id}> {desc.description} </h4>;
@@ -57,7 +65,8 @@ class News extends Component {
       <div className="App2">
         <h1>List of News</h1>
 
-        <ul>{items} </ul>
+        {/* <ul>{items} </ul> */}
+        <Detail list={items} />
 
       </div>
     );
