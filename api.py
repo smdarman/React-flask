@@ -142,6 +142,22 @@ def get_news():
 
     return {'data': data}
 
+@app.route('/api/covid', methods=['GET'])
+def get_covid():
+   
+
+    # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
+
+    urls = "https://thevirustracker.com/free-api?global=stats"
+
+   
+
+    # fetching data in json format
+    data = requests.get(urls).json()
+
+    return {'data': data}
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

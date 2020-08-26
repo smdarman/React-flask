@@ -7,6 +7,7 @@ import List from "./pages/List";
 import News from "./pages/News";
 import About from "./pages/About";
 import db from "./pages/db";
+import covid from "./pages/covid";
 
 // class App extends Component {
 //   render() {
@@ -74,13 +75,14 @@ class App extends Component {
          
 
           <Switch>
-            {/* this is router creation section */}
+            {/* this is route creation section */}
             <Route exact path="/" component={Home} />
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/News" component={News} />
             <Route path="/About" component={About} />
             <Route path="/db" component={db} />
+            <Route path="/covid" component={covid} />
           </Switch>
         </div>
       </Router>
