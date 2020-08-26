@@ -41,7 +41,7 @@ class App extends Component {
         <div className="App">
           <h1>React flask app</h1>
 
-          <Link to="./">
+          <Link to="/">
             {" "}
             <Button variant="contained" color="primary">
               Home
@@ -52,6 +52,12 @@ class App extends Component {
             {" "}
             <Button variant="contained" color="secondary">
               News
+            </Button>
+          </Link>
+            <Link to="/covid">
+            {" "}
+            <Button variant="contained" color="secondary">
+              Covid
             </Button>
           </Link>
 
@@ -77,7 +83,7 @@ class App extends Component {
           <Switch>
             {/* this is route creation section */}
             <Route exact path="/" component={Home} />
-            <Route exact path="/" component={Home} />
+
             <Route path="/list" component={List} />
             <Route path="/News" component={News} />
             <Route path="/About" component={About} />
