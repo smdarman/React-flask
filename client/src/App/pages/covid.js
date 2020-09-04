@@ -26,7 +26,7 @@ class covid_news extends Component {
       .then(News => {
         console.log( News)
         this.setState({
-          News:  News.data.results
+          News:  News.data.countrydata
         })
       })
       .catch(err => console.log(err))
@@ -48,9 +48,9 @@ class covid_news extends Component {
         <h1 style={mystyle}> total_cases: 
          {item.total_cases}
         </h1>
-        <a href={item.url}>{item.source.url}</a>
+        <a href={item.url}>{item.info.title}</a>
        <h3 >
-         {item.total_recovered}
+         New cases: {item.total_new_cases_today}
       </h3> 
       
       

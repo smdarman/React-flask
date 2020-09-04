@@ -8,6 +8,7 @@ import News from "./pages/News";
 import About from "./pages/About";
 import db from "./pages/db";
 import covid from "./pages/covid";
+import tweet from "./pages/tweet"
 
 // class App extends Component {
 //   render() {
@@ -70,6 +71,18 @@ class App extends Component {
                 Db
               </Button>
             </Link>
+            <Link to="./covid">
+              {" "}
+              <Button variant="contained" color="secondary">
+                Covid
+              </Button>
+            </Link>
+            <Link to="./tweet">
+              {" "}
+              <Button variant="contained" color="secondary">
+                Tweets
+              </Button>
+            </Link>
           
 
          
@@ -83,6 +96,7 @@ class App extends Component {
             <Route path="/About" component={About} />
             <Route path="/db" component={db} />
             <Route path="/covid" component={covid} />
+            <Route path="/tweet" component={tweet} />
           </Switch>
         </div>
       </Router>

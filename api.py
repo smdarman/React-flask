@@ -30,12 +30,14 @@ def index():
     return app.send_static_file('index.html')
     
 
-local = MongoClient('localhost:27017')
-db2 = local.twitterdb #poster is the name of db
+# local = MongoClient('localhost:27017')
+client = MongoClient(os.getenv('DATABASE_URL'),
+                      ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+db2 = client.twitterdb #twitterdb is the name of db
 
 @app.route('/tweet', methods=['GET'])
 def get_all_tweets():
-  #posts is the name of collection in poster db
+  #mytest2_search is the name of collection in twitter db
   star = db2.mytest2_search
   output = []
   for s in star.find():
@@ -148,7 +150,7 @@ def get_covid():
 
     # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
 
-    urls = "https://thevirustracker.com/free-api?global=stats"
+    urls = "https://api.thevirustracker.com/free-api?countryTotal=AU"
 
    
 
