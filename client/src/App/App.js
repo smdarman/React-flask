@@ -8,32 +8,7 @@ import News from "./pages/News";
 import About from "./pages/About";
 import db from "./pages/db";
 import covid from "./pages/covid";
-import tweet from "./pages/tweet"
-
-// class App extends Component {
-//   render() {
-//     const App = () => (
-//       <div>
-//         <Switch>
-//           <Route exact path='/' component={Home}/>
-//           <Route path='/list' component={List}/>
-//           <Route path='/News' component={News}/>
-//           <Route path='/About' component={About}/>
-//           <Route path='/db' component={db}/>
-//         </Switch>
-//       </div>
-//     )
-//     return (
-//       //App is a component too with the above properties and this is what is returned
-//       <Switch>
-//         <App/>
-
-//       </Switch>
-//     );
-//   }
-// }
-
-// export default App;
+import tweet from "./pages/tweet";
 
 class App extends Component {
   render() {
@@ -55,43 +30,33 @@ class App extends Component {
               News
             </Button>
           </Link>
-            <Link to="/covid">
+          <Link to="/covid">
             {" "}
             <Button variant="contained" color="secondary">
               Covid
             </Button>
           </Link>
 
-          
-            <Link to="./About">
-              {" "}
-              <Button variant="contained" color="primary">
-                About
-              </Button>
-            </Link>
-          
-         
-            <Link to="./db">
-              {" "}
-              <Button variant="contained" color="secondary">
-                Db
-              </Button>
-            </Link>
-            <Link to="./covid">
-              {" "}
-              <Button variant="contained" color="secondary">
-                Covid
-              </Button>
-            </Link>
-            <Link to="./tweet">
-              {" "}
-              <Button variant="contained" color="secondary">
-                Tweets
-              </Button>
-            </Link>
-          
+          <Link to="./About">
+            {" "}
+            <Button variant="contained" color="primary">
+              About
+            </Button>
+          </Link>
 
-         
+          <Link to="./db">
+            {" "}
+            <Button variant="contained" color="secondary">
+              Db
+            </Button>
+          </Link>
+
+          <Link to="./tweet">
+            {" "}
+            <Button variant="contained" color="secondary">
+              Tweets
+            </Button>
+          </Link>
 
           <Switch>
             {/* this is route creation section */}

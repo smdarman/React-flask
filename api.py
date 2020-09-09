@@ -3,6 +3,7 @@ from flask import Flask
 import requests
 from flask import jsonify
 import ssl
+import pandas as pd
 
 from dotenv import load_dotenv
 
@@ -34,15 +35,45 @@ def index():
 client = MongoClient(os.getenv('DATABASE_URL'),
                       ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 db2 = client.twitterdb #twitterdb is the name of db
+star = db2.mytest2_search
+#to change to dataframe
+df = pd.DataFrame(list(star.find()))
+print(df.sentiment.mean())
+
+
 
 @app.route('/tweet', methods=['GET'])
 def get_all_tweets():
   #mytest2_search is the name of collection in twitter db
   star = db2.mytest2_search
+  positive = 0
+
+  negative = 0
+
+  neutral = 0
   output = []
   for s in star.find():
-    output.append({'tweet' : s['text'], 'sentiment' : s['sentiment']})
+    sentiment = s['sentiment']
+    if (sentiment == 0):  # adding reaction of how people are reacting to find average later
+        neutral += 1
+    
+    elif (sentiment > 0.1 and sentiment <= 0.9):
+        positive += 1
+    
+    elif (sentiment > -0.9 and sentiment <= -0.1):
+        negative += 1
+    
+  output.append({'neutral' : neutral, 'positive' : positive, 'negative': negative})
   return jsonify({'result' : output})
+
+# @app.route('/tweet', methods=['GET'])
+# def get_all_tweets():
+#   #mytest2_search is the name of collection in twitter db
+#   star = db2.mytest2_search
+#   output = []
+#   for s in star.find():
+#     output.append({'tweet' : s['text'], 'sentiment' : s['sentiment']})
+#   return jsonify({'result' : output})
 
 
 client = MongoClient(os.getenv('DATABASE_URL'),
@@ -54,6 +85,7 @@ db = client.test
 def get_all_stars():
   #posts is the name of collection in poster db
   star = db.registrations
+  
   output = []
   for s in star.find():
     output.append({'title' : s['name'], 'name' : s['email']})

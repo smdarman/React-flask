@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import Detail from './news_detail'
+
+import {Bar} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
+
+
 
 class tweet_list extends Component {
   // Initialize the state
@@ -36,35 +40,59 @@ class tweet_list extends Component {
 
   render() {
 
-    const mystyle = {
-      color: "red",
-      backgroundColor: "lightblue",
-      fontFamily: "Arial"
+    let empSal = [];
+  for (const dataObj of this.state.News) {
+            empSal.push(parseInt(dataObj.negative));
+            empSal.push(parseInt(dataObj.neutral));
+            empSal.push(parseInt(dataObj.positive));
+          };
+    
+  
+
+    
+    const data4 = {
+      labels: [
+        'Negative',
+        'Neutral',
+        'Positive'
+      ],
+      datasets: [{
+        data: empSal,
+        label: "Sentiment analysis",
+        
+        backgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56'
+        ],
+        hoverBackgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56'
+        ]
+      }]
     };
 
-    var items = this.state.News.map(function (item, i) {
-      return <div key={i} >
+ 
 
-        <h1 style={mystyle}> sentiment:
-         {item.sentiment}
-        </h1>
-
-       <h3 >
-         Tweets: {item.tweet}
-      </h3>
-
-
-
-        </div>
-
-    });
-
+    
     return (
       <div className="App2">
-        <h1>List of News</h1>
+        <h1>Tweet Analysis</h1>
 
         {/* <ul>{items} </ul> */}
-        <Detail list={items} />
+               <h2>Pie Example</h2>
+        <Pie data={data4} />
+        <Bar
+          data={data4}
+          width={100}
+          height={50}
+          options={{
+            maintainAspectRatio: false
+          }}
+        />
+         
+        
 
       </div>
     );
