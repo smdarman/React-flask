@@ -9,6 +9,7 @@ import About from "./pages/About";
 import db from "./pages/db";
 import covid from "./pages/covid";
 import tweet from "./pages/tweet";
+import topic from "./pages/topic";
 
 class App extends Component {
   render() {
@@ -57,6 +58,12 @@ class App extends Component {
               Tweets
             </Button>
           </Link>
+          <Link to="./topic">
+            {" "}
+            <Button variant="contained" color="secondary">
+              Topic
+            </Button>
+          </Link>
 
           <Switch>
             {/* this is route creation section */}
@@ -68,6 +75,7 @@ class App extends Component {
             <Route path="/db" component={db} />
             <Route path="/covid" component={covid} />
             <Route path="/tweet" component={tweet} />
+            <Route path="/topic" component={topic} />
           </Switch>
         </div>
       </Router>

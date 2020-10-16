@@ -4,17 +4,21 @@ import requests
 from flask import jsonify
 import ssl
 import pandas as pd
+from flask import request
 
 from dotenv import load_dotenv
 
 from pymongo import MongoClient
 import os
+from flask_cors import CORS
+import json
 
 project_folder = os.path.expanduser('~/React-flask')  # adjust as appropriate
 load_dotenv(os.path.join(project_folder, '.env'))
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+#env from computer variables stored in file
 API = os.environ.get('API_KEY')
 
 # app = Flask(__name__)
@@ -25,6 +29,8 @@ API = os.environ.get('API_KEY')
 #             static_folder='client/build')
 
 app = Flask(__name__, static_folder='client/build', static_url_path='/')
+CORS(app)
+app.config['DEBUG'] = True
 
 @app.route('/')
 def index():
@@ -38,7 +44,7 @@ db2 = client.twitterdb #twitterdb is the name of db
 star = db2.mytest2_search
 #to change to dataframe
 df = pd.DataFrame(list(star.find()))
-print(df.sentiment.mean())
+print(df.sentiment.head())
 
 
 
@@ -64,6 +70,7 @@ def get_all_tweets():
         negative += 1
     
   output.append({'neutral' : neutral, 'positive' : positive, 'negative': negative})
+  print('output is',output)
   return jsonify({'result' : output})
 
 # @app.route('/tweet', methods=['GET'])
@@ -137,44 +144,82 @@ def get_list():
       output.append({'direction' : i['name'], 'polarity' : i['charge']})
     return jsonify({'list' : output})
 
-@app.route('/api/getNews', methods=['GET'])
+
+@app.route('/api/getNews', methods=['GET', 'POST'])
 def get_news():
-    api = API
+ 
+  
+  
+  # # print('myterm', term)
+  # if request.method == 'POST':
+  #   print('post app')
+  #   req = request.json
+  #   print(req)
+  #   # term = request.form['term']
 
-    # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
-
-    urls = "https://newsapi.org/v2/top-headlines?country=au&category=health&apiKey="
-
-    main_url = urls + api
-
-    # fetching data in json format
-    data = requests.get(main_url).json()
-
-    # getting all articles in a string article
-    # data = page["articles"]
-    # desc = []
-    # news = []
-    # img = []
-    # url = []
-    # bl = []
-
-    # for i in range(len(l)):
-    #     f = l[i]
-    #     news.append(f['title'])
-    #     desc.append(f['description'])
-    #     img.append(f['urlToImage'])
-    #     url.append(f['url'])
-    #     blob = TextBlob(f['title'])
-    #     blob = blob.sentiment.polarity
-    #     bl.append(blob)
-    #     # print(blob.sentiment)
-    # mylist= zip(news, desc, img, url, bl)
+  #   #getting the value of name from the json
+  #   term = req['value'] + term
    
+  #   print(term)
+  #term1 = request.form['term']
+  try:
+    req = request.json
+    print(req)
+    term1= req['value']
+    print(f"main term is {term1}")
+    term = f"{term1}"
+    print(f"term is {term}")
+  except:
+    term = ''
+  # print('after', term)
+  # term = ''
+  # req = request.json
 
+  # term = 'health'
+
+
+  # if request.method == 'POST':
+  #   req = request.json
+  #   print(req)
+  #   term= req['value']
+  #   print('first term is',term)
+
+     
 
     
+    
+    # print('term is',term)
+  api = API
+      # print(term)
 
-    return {'data': data}
+
+
+            # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
+
+
+
+  urls = "https://newsapi.org/v2/top-headlines?country=au&category="
+
+
+
+  bit = "&apiKey="
+
+  main_url = urls + term + bit + api
+
+        # fetching data in json format
+  data = requests.get(main_url).json()
+  # a_dic['data'] = data
+
+
+
+
+
+
+
+
+  return {'data': data}
+
+
 
 @app.route('/api/covid', methods=['GET'])
 def get_covid():

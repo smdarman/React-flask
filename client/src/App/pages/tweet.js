@@ -82,11 +82,12 @@ class tweet_list extends Component {
 
         {/* <ul>{items} </ul> */}
                <h2>Pie Example</h2>
-        <Pie data={data4} />
+        <Pie data={data4} 
+       />
         <Bar
           data={data4}
-          width={100}
-          height={50}
+          width={20}
+          height={20}
           options={{
             maintainAspectRatio: false
           }}
