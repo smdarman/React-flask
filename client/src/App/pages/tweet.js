@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import {Bar} from 'react-chartjs-2';
+// import {Bar} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 
 
@@ -81,21 +81,27 @@ class tweet_list extends Component {
         <h1>Tweet Analysis</h1>
 
         {/* <ul>{items} </ul> */}
-               <h2>Pie Example</h2>
+               <h2>Example</h2>
         <Pie data={data4} 
        />
-        <Bar
-          data={data4}
-          width={20}
-          height={20}
+       
+       
+
+       {/* <Bar */}
+          {/* data={data4}
+          width={100}
+          height={100}
           options={{
             maintainAspectRatio: false
           }}
-        />
+        /> */}
+
+       </div>
+ 
          
         
 
-      </div>
+      
     );
   }
 }

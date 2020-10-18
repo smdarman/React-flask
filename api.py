@@ -51,7 +51,7 @@ print(df.sentiment.head())
 @app.route('/tweet', methods=['GET'])
 def get_all_tweets():
   #mytest2_search is the name of collection in twitter db
-  star = db2.mytest2_search
+  star = db2.result2_search
   positive = 0
 
   negative = 0
