@@ -162,15 +162,15 @@ def get_news():
    
   #   print(term)
   #term1 = request.form['term']
-  try:
-    req = request.json
-    print(req)
-    term1= req['value']
-    print(f"main term is {term1}")
-    term = f"{term1}"
-    print(f"term is {term}")
-  except:
-    term = ''
+  # try:
+  req = request.json
+  print(req)
+  term1= req['value']
+    # print(f"main term is {term1}")
+  term_1 = f"{term1}"
+  print(f"term is {term_1}")
+  # except:
+  #   term = ''
   # print('after', term)
   # term = ''
   # req = request.json
@@ -204,7 +204,7 @@ def get_news():
 
   bit = "&apiKey="
 
-  main_url = urls + term + bit + api
+  main_url = urls + term1 + bit + api
 
         # fetching data in json format
   data = requests.get(main_url).json()
