@@ -41,10 +41,13 @@ class db extends Component {
     var subject = this.state.Star.map(function (item, i) {
       return <div key={i} >
         <h3 >
-         {item.name}
-        </h3>
-       <h2 >
          {item.title}
+        </h3>
+       <h2 style={{color: 'green'}} >
+         {item.name >= 0.1  ? item.name : ''}
+      </h2>
+      <h2 style={{color: 'red'}} >
+         {item.name <= -0.1 ? item.name : ''}
       </h2>
       
         </div>

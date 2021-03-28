@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <h1>React flask app</h1>
+        
 
           <Link to="/">
             {" "}
@@ -28,7 +28,7 @@ class App extends Component {
           <Link to="./News">
             {" "}
             <Button variant="contained" color="secondary">
-              News
+              Finance
             </Button>
           </Link>
           <Link to="/covid">

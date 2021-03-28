@@ -1,6 +1,6 @@
-
 import React, { Component } from "react";
 import Detail from './news_detail'
+
 
 
 class News extends Component {
@@ -22,53 +22,6 @@ class News extends Component {
     this.setState({value: e.target.value});
   }
 
-  // handleChange(event) {
-  //   this.setState({value: event.target.value});
-  // }
-  //change topic on entering value
-//   handleChange = (event)  => {
-//     console.log("making request")
-//     fetch("/api/getNews", {
-//       method:"POST",
-//       cache: "no-cache",
-//       headers:{
-//           "content_type":"application/json",
-//       },
-//       body:JSON.stringify(this.state.value)
-//       }
-//   ).then(response => {
-
-//   return response.json()
-// })
-// .then(json => {
-
-// this.setState({topic: json[0]})
-// })
-// //   }
-
-//   handleSubmit = (event) => {
-//     alert('A form was submitted: ' + this.state.value);
-
-//     fetch("http://localhost:5000/api/getNews", {
-//       method:"POST",
-//       cache: "no-cache",
-//       headers:{
-//           "content_type":"application/json",
-//       },
-//       body:JSON.stringify(this.state.value)
-//       }
-//   ).then(response => {
-
-//   return response.json()
-// })
-// .then(json => {
-
-// this.setState({topic: json[0]})
-// })
-
-
-//   event.preventDefault();
-// }
 
 handleSubmit = () => {
   
@@ -103,49 +56,6 @@ handleSubmit = () => {
 //    this.getNews();
 // }
 
-// // Retrieves the News of items from the flask app
-// getNews = () => {
-//   console.log('resubmit');
-//   fetch("/api/getNews")
-//     .then(res => res.json())
-//     //   .then(json => console.log(json));
-//     // .then(data => data.json())
-//     //   console.log();
-//     // .then((News) => this.setState({ News }));
-//     .then(News => {
-//       console.log( News)
-//       this.setState({
-//         News:  News.data.articles
-//       })
-//     })
-//     .catch(err => console.log(err))
- 
-
-// };
-
-// .then(res => console.log(res)).
-
-
-
-
-  //Retrieves the News of items from the flask app
-  // getNews = () => {
-  //   fetch("http://localhost:5000/api/getNews")
-  //     .then(res => res.json())
-  //     //   .then(json => console.log(json));
-  //     // .then(data => data.json())
-  //     //   console.log();
-  //     // .then((News) => this.setState({ News }));
-  //     .then(News => {
-  //       console.log( News)
-  //       this.setState({
-  //         News:  News.data.articles
-  //       })
-  //     })
-  //     .catch(err => console.log(err))
-
-
-  // };
 
   render() {
 
@@ -183,14 +93,15 @@ handleSubmit = () => {
         <button> submit </button>
       </form> */}
         
-      <form  onSubmit={this.handleSubmit} >
+      {/* <form  onSubmit={this.handleSubmit} >
         <label>
           Topic:
           <input type="text" name="term" onChange={this.handleValue} />
           <button type="submit"  value={this.state.value} >Submit</button>
         </label>
       </form>
-        <h1> Topic is: {this.state.value} </h1>
+        <h1> Topic is: {this.state.value} </h1> */}
+        
       <Detail list={items} />
       </div>
     );

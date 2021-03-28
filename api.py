@@ -85,17 +85,17 @@ def get_all_tweets():
 
 client = MongoClient(os.getenv('DATABASE_URL'),
                       ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
-db = client.test
+db = client.twitterdb
 
 
 @app.route('/star', methods=['GET'])
 def get_all_stars():
   #posts is the name of collection in poster db
-  star = db.registrations
+  star = db.result2_search
   
   output = []
-  for s in star.find():
-    output.append({'title' : s['name'], 'name' : s['email']})
+  for s in star.find().sort("_id", -1).limit(40):
+    output.append({'title' : s['tweet'], 'name' : s['sentiment']})
   return jsonify({'result' : output})
 
 # db = client.poster #poster is the name of db

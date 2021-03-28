@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+ import React, { Component } from "react";
 import Detail from './news_detail'
+
 
 class covid_news extends Component {
   // Initialize the state
