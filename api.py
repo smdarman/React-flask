@@ -223,19 +223,15 @@ def get_news():
 
 @app.route('/api/covid', methods=['GET'])
 def get_covid():
-   
 
     # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
 
     urls = "https://api.covid19api.com/summary"
 
-   
-
     # fetching data in json format
     data = requests.get(urls).json()
 
     return {'data': data}
-
 
 
 if __name__ == '__main__':
