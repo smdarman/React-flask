@@ -7,6 +7,7 @@ class News extends Component {
   // Initialize the state
   constructor(props) {
     super(props);
+    
     this.state = {
       News: [],
       value: '',
@@ -86,21 +87,8 @@ handleSubmit = () => {
     // });
     return (
       <div className="App2">
-        <h1>List of News</h1>
-{/* 
-        <form action="" onSubmit={this.getNews}>
-        <input type="text" onChange={this.handleSubmit} />
-        <button> submit </button>
-      </form> */}
-        
-      {/* <form  onSubmit={this.handleSubmit} >
-        <label>
-          Topic:
-          <input type="text" name="term" onChange={this.handleValue} />
-          <button type="submit"  value={this.state.value} >Submit</button>
-        </label>
-      </form>
-        <h1> Topic is: {this.state.value} </h1> */}
+
+
         
       <Detail list={items} />
       </div>

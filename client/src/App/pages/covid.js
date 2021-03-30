@@ -27,7 +27,7 @@ class covid_news extends Component {
       .then(News => {
         console.log( News)
         this.setState({
-          News:  News.data.countrydata
+          News:  News.data.Countries
         })
       })
       .catch(err => console.log(err))
@@ -46,14 +46,22 @@ class covid_news extends Component {
     var items = this.state.News.map(function (item, i) {
       return <div key={i} >
         
-        <h1 style={mystyle}> total_cases: 
-         {item.total_cases}
-        </h1>
-        <a href={item.url}>{item.info.title}</a>
-       <h3 >
-         New cases: {item.total_new_cases_today}
-      </h3> 
-      
+        <h1 style={mystyle}> Country:
+     {item.Country}
+    </h1>
+    <h1 > New cases:
+     {item.NewConfirmed}
+    </h1>
+    <h3 >
+     New Deaths: {item.NewDeaths}
+  </h3>
+
+   <h3 >
+    New Recoverd: {item.NewRecovered}
+  </h3>
+  <h3 >
+    Date: {item.Date}
+  </h3>
       
    
         </div>

@@ -227,7 +227,7 @@ def get_covid():
 
     # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
 
-    urls = "https://api.thevirustracker.com/free-api?countryTotal=AU"
+    urls = "https://api.covid19api.com/summary"
 
    
 

@@ -33,35 +33,35 @@ class App extends Component {
           </Link>
           <Link to="/covid">
             {" "}
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="primary">
               Covid
             </Button>
           </Link>
 
           <Link to="./About">
             {" "}
-            <Button variant="contained" color="primary">
-              About
+            <Button variant="contained" color="secondary">
+              Catagory
             </Button>
           </Link>
 
           <Link to="./db">
             {" "}
-            <Button variant="contained" color="secondary">
-              Db
+            <Button variant="contained" color="primary">
+              Tweets
             </Button>
           </Link>
 
           <Link to="./tweet">
             {" "}
             <Button variant="contained" color="secondary">
-              Tweets
+              Chart
             </Button>
           </Link>
           <Link to="./topic">
             {" "}
-            <Button variant="contained" color="secondary">
-              Topic
+            <Button variant="contained" color="primary">
+              Headlines
             </Button>
           </Link>
 
