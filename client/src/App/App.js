@@ -10,6 +10,7 @@ import db from "./pages/db";
 import covid from "./pages/covid";
 import tweet from "./pages/tweet";
 import topic from "./pages/topic";
+import index from "./pages/index"
 
 class App extends Component {
   render() {
@@ -67,7 +68,8 @@ class App extends Component {
 
           <Switch>
             {/* this is route creation section */}
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={index} />
+            <Route path="/home" component={Home} />
 
             <Route path="/list" component={List} />
             <Route path="/News" component={News} />

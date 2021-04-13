@@ -8,6 +8,7 @@ class covid_news extends Component {
     super(props);
     this.state = {
       News: [],
+      Global: [],
     };
   }
 
@@ -28,6 +29,9 @@ class covid_news extends Component {
         console.log( News)
         this.setState({
           News:  News.data.Countries
+        })
+        this.setState({
+          Global:  News.data.Global
         })
       })
       .catch(err => console.log(err))
@@ -70,10 +74,15 @@ class covid_news extends Component {
    
     return (
       <div className="App2">
-        <h1>List of News</h1>
+        <h3>Global NewConfirmed: {this.state.Global.NewConfirmed}</h3>
+        <h3>Global NewDeath: {this.state.Global.NewDeaths}</h3>
+        <h3>Global NewRecovered: {this.state.Global.NewRecovered}</h3>
+
 
         {/* <ul>{items} </ul> */}
         <Detail list={items} />
+
+
 
       </div>
     );

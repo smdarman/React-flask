@@ -84,7 +84,9 @@ def get_all_tweets():
 
 
 client = MongoClient(os.getenv('DATABASE_URL'),
-                      ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+
+                     ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+#tweets from db
 db = client.twitterdb
 
 
@@ -97,6 +99,24 @@ def get_all_stars():
   for s in star.find().sort("_id", -1).limit(40):
     output.append({'title' : s['tweet'], 'name' : s['sentiment']})
   return jsonify({'result' : output})
+
+#News from mongo
+client = MongoClient(os.getenv('DATABASE_URL'),
+
+                     ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+db3 = client.newsdb
+
+
+@app.route('/news', methods=['GET'])
+def get_all_news():
+    # posts is the name of collection in poster db
+    star2 = db3.result_search
+
+    output = []
+    for s in star2.find().sort("_id", -1).limit(30):
+        output.append({'title': s['title'], 'detail': s['description']})
+    return jsonify({'result': output})
+
 
 # db = client.poster #poster is the name of db
 #
