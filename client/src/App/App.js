@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import "./App.css";
 import Home from "./pages/Home";
 import List from "./pages/List";
@@ -15,9 +18,14 @@ import index from "./pages/index"
 class App extends Component {
   render() {
     return (
+
       <Router>
-        <div className="App">
-        
+         <div className="App">
+        <AppBar position="static">
+        <Tabs aria-label="simple tabs example"   indicatorColor="secondary"
+    textColor="secondary" centered>
+   
+       
 
           <Link to="/">
             {" "}
@@ -64,8 +72,12 @@ class App extends Component {
             <Button variant="contained" color="primary">
               Headlines
             </Button>
+            {/* <Tab label="Item One"  /> */}
           </Link>
-
+          
+          </Tabs>
+      </AppBar>
+</div>
           <Switch>
             {/* this is route creation section */}
             <Route exact path="/" component={index} />
@@ -79,7 +91,8 @@ class App extends Component {
             <Route path="/tweet" component={tweet} />
             <Route path="/topic" component={topic} />
           </Switch>
-        </div>
+      
+      
       </Router>
     );
   }
