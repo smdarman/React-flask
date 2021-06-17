@@ -72,7 +72,7 @@ export default  function Index() {
 
             <h3>{item.detail}</h3>
 
-
+            <img src={item.img} alt="" height="250" width="350" />
 
           </div>
         );

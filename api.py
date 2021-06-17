@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 
 from pymongo import MongoClient
 import os
+
 from flask_cors import CORS
 import json
 
@@ -114,7 +115,7 @@ def get_all_news():
 
     output = []
     for s in star2.find().sort("_id", -1).limit(30):
-        output.append({'title': s['title'], 'detail': s['description']})
+        output.append({'title': s['title'], 'detail': s['description'], 'img': s['img']})
     return jsonify({'result': output})
 
 

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 import "./App.css";
 import Home from "./pages/Home";
 import List from "./pages/List";
@@ -21,7 +21,7 @@ class App extends Component {
 
       <Router>
          <div className="App">
-        <AppBar position="static">
+        <AppBar position="static" color='secondary'>
         <Tabs aria-label="simple tabs example"   indicatorColor="secondary"
     textColor="secondary" centered>
    
