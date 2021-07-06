@@ -9,7 +9,7 @@ In the project directory, you can run:
 ### npm start
 ### yarn build
 ### npm install for problems
-git add -f client/build  #to add untracked folder
+'git add -f client/build  #to add untracked folder'
 This needs to be done to add them. 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
