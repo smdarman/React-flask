@@ -150,7 +150,7 @@ def get_current_time():
     return {'time': time.time()}
 
   
-
+ 
 
 list = [{'name': 'up', 'charge': '+2/3'},
           {'name': 'down', 'charge': '-1/3'},
@@ -169,67 +169,55 @@ def get_list():
 @app.route('/api/getNews', methods=['GET', 'POST'])
 def get_news():
  
+  try:
   
-  
-  # # print('myterm', term)
-  # if request.method == 'POST':
-  #   print('post app')
-  #   req = request.json
-  #   print(req)
-  #   # term = request.form['term']
 
-  #   #getting the value of name from the json
-  #   term = req['value'] + term
-   
-  #   print(term)
-  #term1 = request.form['term']
-  # try:
-  req = request.json
-  print(req)
-  term1= req['value']
-    # print(f"main term is {term1}")
-  term_1 = f"{term1}"
-  print(f"term is {term_1}")
-  # except:
-  #   term = ''
-  # print('after', term)
-  # term = ''
-  # req = request.json
+    req = request.json
+    print(req)
+    term1= req['value']
+      # print(f"main term is {term1}")
+    term_1 = f"{term1}"
+    print(f"term is {term_1}")
+    # except:
+    #   term = ''
+    # print('after', term)
+    # term = ''
+    # req = request.json
 
-  # term = 'health'
+    # term = 'health'
 
 
-  # if request.method == 'POST':
-  #   req = request.json
-  #   print(req)
-  #   term= req['value']
-  #   print('first term is',term)
+    # if request.method == 'POST':
+    #   req = request.json
+    #   print(req)
+    #   term= req['value']
+    #   print('first term is',term)
 
-     
+        
 
-    
-    
-    # print('term is',term)
-  api = API
-      # print(term)
+      
+      
+      # print('term is',term)
+    api = API
+        # print(term)
 
 
 
-            # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
+              # urls = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
 
 
 
-  urls = "https://newsapi.org/v2/top-headlines?country=au&category="
+    urls = "https://newsapi.org/v2/top-headlines?country=au&category="
 
 
 
-  bit = "&apiKey="
+    bit = "&apiKey="
 
-  main_url = urls + term1 + bit + api
+    main_url = urls + term1 + bit + api
 
-        # fetching data in json format
-  data = requests.get(main_url).json()
-  # a_dic['data'] = data
+          # fetching data in json format
+    data = requests.get(main_url).json()
+    # a_dic['data'] = data
 
 
 
@@ -238,8 +226,9 @@ def get_news():
 
 
 
-  return {'data': data}
-
+    return {'data': data}
+  except Exception as e:
+    print(e)
 
 
 @app.route('/api/covid', methods=['GET'])
