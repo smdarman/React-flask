@@ -9,7 +9,7 @@ export default function App() {
     const data = { value: value };
     console.log("submit");
     console.log(value);
-    fetch("api/getNews", {
+    fetch("/api/getNews", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
