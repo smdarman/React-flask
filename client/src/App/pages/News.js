@@ -37,7 +37,7 @@ export default function Home() {
   },[] );
 
   return (
-    <section id="app">
+    <section className="App2" id="app">
 
 
 

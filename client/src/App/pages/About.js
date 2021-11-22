@@ -46,7 +46,7 @@ export default function App() {
   }, []);
 
   return (
-    <section id="app">
+    <section className="App2" id="app">
        
        <h1 style={{color: "red"}}><strong></strong> Topic is: <strong>{value}</strong> </h1>
 

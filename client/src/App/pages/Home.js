@@ -63,7 +63,7 @@ export default function Home() {
     <>
 
 
-    <section id="app">
+    <section className="App2" id="app">
        
 
 

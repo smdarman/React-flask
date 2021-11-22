@@ -57,7 +57,7 @@ export default  function Index() {
     <>
 
 
-    <section id="app">
+    <section className="App2" id="app">
 
 
 

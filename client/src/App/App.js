@@ -14,11 +14,12 @@ import covid from "./pages/covid";
 import tweet from "./pages/tweet";
 import topic from "./pages/topic";
 import index from "./pages/index"
+import { Footer } from "./Component/footer";
 
 class App extends Component {
   render() {
     return (
-
+<>
       <Router>
          <div className="App">
         <AppBar position="static" color='secondary'>
@@ -77,7 +78,10 @@ class App extends Component {
           
           </Tabs>
       </AppBar>
+      
 </div>
+
+
           <Switch>
             {/* this is route creation section */}
             <Route exact path="/" component={index} />
@@ -94,6 +98,8 @@ class App extends Component {
       
       
       </Router>
+      <Footer />
+      </>
     );
   }
 }

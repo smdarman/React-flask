@@ -36,3 +36,7 @@ div.App {
     transform: rotate(360deg);
   }
 }
+.App2 {
+margin-left: 10px;
+background-color: coral;
+}
