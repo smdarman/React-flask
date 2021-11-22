@@ -7,7 +7,7 @@ yarn start-api
 In the project directory, you can run:
 
 ### npm start
-### yarn build
+### sudo yarn build
 ### npm install for problems
 'git add -f client/build  #to add untracked folder'
 This needs to be done to add them. 
